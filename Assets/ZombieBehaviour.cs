@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ZombieBehaviour : MonoBehaviour
 {
-    int hp = 10;
+    int hp = 6;
 
     GameObject player;
     // Start is called before the first frame update
