@@ -33,6 +33,21 @@ public class PlayerController : MonoBehaviour
         transform.Translate(Vector3.forward * movementVector.y * Time.deltaTime * playerSpeed);
     }
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     void OnMove(InputValue inputValue) 
     {
         movementVector = inputValue.Get<Vector2>();

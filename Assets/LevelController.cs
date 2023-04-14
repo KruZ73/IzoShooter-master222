@@ -6,7 +6,7 @@ using UnityEngine;
 public class LevelController : MonoBehaviour
 {
     public GameObject ZombiePrefab;
-    private int maxZombies = 4;
+    private int maxZombies = 5;
 
     void Start()
     {
