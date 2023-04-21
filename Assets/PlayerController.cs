@@ -58,9 +58,9 @@ public class PlayerController : MonoBehaviour
     void OnFire()
     {
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn);
-        bullet.transform.parent = null;
-        bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward*bulletSpeed, ForceMode.VelocityChange);
-        Destroy(bullet, 5);
+        // bullet.transform.parent = null;
+        bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * 10, ForceMode.Impulse);
+        Destroy(bullet, 5f);
     }
 
     private void OnCollisionEnter(Collision collision)

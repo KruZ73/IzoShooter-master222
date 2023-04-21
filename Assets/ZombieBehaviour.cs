@@ -18,14 +18,45 @@ public class ZombieBehaviour : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent= GetComponent<NavMeshAgent>();
+        zhp = 10;
     }
 
     // Update is called once per frame
     void Update()
     {
-        agent.destination = player.position;
+
+        bool seesPlayer = false;
+        bool hearsPlayer = false;
 
 
+        RaycastHit hit;
+        Vector3 playerVector = player.position - transform.position;
+        if (Physics.Raycast(transform.position, playerVector, out hit))
+            seesPlayer = true;
+
+        
+        Collider[] nearby = Physics.OverlapSphere(transform.position, 5f);
+            foreach(Collider collider in nearby)
+            {
+                if(collider.transform.CompareTag("Player"))
+                {
+                    hearsPlayer = true;
+                }
+            }
+
+
+        if (seesPlayer || hearsPlayer)
+        {
+            agent.destination = player.position;
+            agent.isStopped = false;
+        }
+        else
+        {
+            agent.isStopped = true;
+        }
+
+
+        
 
         if(hp> 0)
         {
@@ -36,6 +67,7 @@ public class ZombieBehaviour : MonoBehaviour
         }
         
     }
+
 
     public void ReceiveDamage(int amount)
     {
